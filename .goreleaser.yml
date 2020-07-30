@@ -1,0 +1,21 @@
+before:
+  hooks:
+    - go mod download
+    - go generate ./...
+builds:
+-
+  flags:
+    - -tags=netgo
+    - -v
+  env:
+    - CGO_ENABLED=0
+  goos:
+    - linux
+    - windows
+    - darwin
+release:
+  github:
+    owner: pharaujo
+    name: tarxzf
+archives:
+  - format: binary
